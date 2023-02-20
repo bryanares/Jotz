@@ -1,33 +1,30 @@
 package com.brian.jotz.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.brian.jotz.R
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import com.brian.jotz.*
+import com.brian.jotz.data.Jotz
+import com.brian.jotz.databinding.FragmentJotzDetailBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [JotzDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class JotzDetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private var _binding: FragmentJotzDetailBinding? = null
+    private val binding get() = _binding!!
+    private val navigationArgs: JotzDetailFragmentArgs by navArgs()
+    lateinit var jotz: Jotz
+    private val viewModel: JotzViewModel by activityViewModels {
+        JotzViewModelFactory(
+            (activity?.application as JotzApplication).database.jotzDao()
+        )
     }
 
     override fun onCreateView(
@@ -35,26 +32,50 @@ class JotzDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_jotz_detail, container, false)
+        _binding = FragmentJotzDetailBinding.inflate(inflater, container, false)
+        val view = binding.root
+        binding.deleteJotBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_jotzDetailFragment_to_jotzListFragment)
+        }
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment JotzDetailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            JotzDetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val id = navigationArgs.jotId
+        viewModel.retrieveJotz(id).observe(this.viewLifecycleOwner) { selectedJotz ->
+            jotz = selectedJotz
+            bind(jotz)
+        }
+    }
+
+    private fun bind(jotz: Jotz) {
+        binding.apply {
+            jotDetailTitle.text = jotz.jotzTitle.toString()
+            jotDetailBody.text = jotz.jotzBody.toString()
+            deleteJotBtn.setOnClickListener {
+                showConfirmationDialog()
             }
+        }
+    }
+
+    //delete Jotz Dialog
+    private fun showConfirmationDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(android.R.string.dialog_alert_title))
+            .setMessage("Are you sure you want to delete Jot?")
+            .setCancelable(false)
+            .setNegativeButton("No") { _, _ -> }
+            .setPositiveButton("Yes") { _, _ ->
+                deleteJotz()
+                Log.d("DetailFrag", "Item Deleted")
+            }
+            .show()
+    }
+
+    //delete current item
+    private fun deleteJotz() {
+        viewModel.deleteJotz(jotz)
+        findNavController().navigateUp()
     }
 }
