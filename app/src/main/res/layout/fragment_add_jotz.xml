@@ -41,6 +41,11 @@
             android:id="@+id/addBody"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:isScrollContainer="true"
+            android:focusable="true"
+            android:maxLines="15"
+            android:enabled="true"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -56,5 +61,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/addNoteET"
         app:layout_constraintTop_toBottomOf="@+id/addNoteET" />
-    
+
 </androidx.constraintlayout.widget.ConstraintLayout>
