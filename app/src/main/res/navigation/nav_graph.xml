@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:id="@+id/nav_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/jotzListFragment">
 
+    <fragment
+        android:id="@+id/jotzListFragment"
+        android:name="com.brian.jotz.fragments.JotzListFragment"
+        android:label="Jotr"
+        tools:layout="@layout/fragment_jotz_list">
+        <action
+            android:id="@+id/action_jotzListFragment_to_addJotzFragment"
+            app:destination="@id/addJotzFragment" />
+        <action
+            android:id="@+id/action_jotzListFragment_to_jotzDetailFragment"
+            app:destination="@id/jotzDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addJotzFragment"
+        android:name="com.brian.jotz.fragments.AddJotzFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_add_jotz">
+        <action
+            android:id="@+id/action_addJotzFragment_to_jotzListFragment"
+            app:destination="@id/jotzListFragment" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="jot_id"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/jotzDetailFragment"
+        android:name="com.brian.jotz.fragments.JotzDetailFragment"
+        android:label="Jot"
+        tools:layout="@layout/fragment_jotz_detail">
+        <action
+            android:id="@+id/action_jotzDetailFragment_to_jotzListFragment"
+            app:destination="@id/jotzListFragment" />
+        <argument
+            android:name="jot_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_jotzDetailFragment_to_addJotzFragment"
+            app:destination="@id/addJotzFragment" />
+    </fragment>
 </navigation>
