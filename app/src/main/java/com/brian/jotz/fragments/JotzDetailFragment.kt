@@ -56,6 +56,9 @@ class JotzDetailFragment : Fragment() {
             deleteJotBtn.setOnClickListener {
                 showConfirmationDialog()
             }
+            editJotFab.setOnClickListener {
+                editJotz()
+            }
         }
     }
 
@@ -77,5 +80,13 @@ class JotzDetailFragment : Fragment() {
     private fun deleteJotz() {
         viewModel.deleteJotz(jotz)
         findNavController().navigateUp()
+    }
+
+    //edit current item(Jotz)
+    private fun editJotz(){
+        val action = JotzDetailFragmentDirections.actionJotzDetailFragmentToAddJotzFragment(
+            getString(R.string.edit_fragment_title), jotz.id
+        )
+        this.findNavController().navigate(action)
     }
 }
