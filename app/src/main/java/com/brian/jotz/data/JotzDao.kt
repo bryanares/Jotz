@@ -12,6 +12,9 @@ interface JotzDao {
     @Delete
     suspend fun delete(jotz: Jotz)
 
+    @Update
+    suspend fun update(jotz: Jotz)
+
     //get specific item from id
     @Query("SELECT * FROM jotz WHERE id = :id")
     fun getItem(id : Int) : Flow<Jotz>
