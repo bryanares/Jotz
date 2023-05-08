@@ -2,14 +2,17 @@ package com.brian.jotz.fragments
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.brian.jotz.*
+import com.brian.jotz.JotzApplication
+import com.brian.jotz.JotzViewModel
+import com.brian.jotz.JotzViewModelFactory
+import com.brian.jotz.R
 import com.brian.jotz.data.Jotz
 import com.brian.jotz.databinding.FragmentJotzDetailBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
