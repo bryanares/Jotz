@@ -1,4 +1,4 @@
-package com.brian.jotz
+package com.brian.jotz.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.brian.jotz.R
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private lateinit var navController: NavController

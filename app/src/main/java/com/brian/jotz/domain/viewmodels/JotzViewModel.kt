@@ -1,8 +1,8 @@
 package com.brian.jotz
 
 import androidx.lifecycle.*
-import com.brian.jotz.data.Jotz
-import com.brian.jotz.data.JotzDao
+import com.brian.jotz.data.models.Jotz
+import com.brian.jotz.data.dao.JotzDao
 import kotlinx.coroutines.launch
 
 class JotzViewModel(private val jotzDao: JotzDao) : ViewModel() {

@@ -1,16 +1,20 @@
-package com.brian.jotz.fragments
+package com.brian.jotz.presentation.fragments
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.brian.jotz.*
+import com.brian.jotz.JotzApplication
+import com.brian.jotz.R
 import com.brian.jotz.databinding.FragmentJotzListBinding
+import com.brian.jotz.domain.viewmodels.JotzViewModel
+import com.brian.jotz.domain.viewmodels.JotzViewModelFactory
+import com.brian.jotz.presentation.adapters.JotzListAdapter
 
 class JotzListFragment : Fragment() {
 
