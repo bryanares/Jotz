@@ -1,4 +1,4 @@
-package com.brian.jotz
+package com.brian.jotz.domain.viewmodels
 
 import androidx.lifecycle.*
 import com.brian.jotz.data.models.Jotz
