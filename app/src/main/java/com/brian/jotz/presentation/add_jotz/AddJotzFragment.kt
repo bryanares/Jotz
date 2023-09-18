@@ -1,4 +1,4 @@
-package com.brian.jotz.presentation.fragments
+package com.brian.jotz.presentation.add_jotz
 
 import android.os.Bundle
 import android.view.LayoutInflater

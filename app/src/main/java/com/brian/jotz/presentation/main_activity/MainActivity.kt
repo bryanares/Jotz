@@ -1,4 +1,4 @@
-package com.brian.jotz.presentation
+package com.brian.jotz.presentation.main_activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

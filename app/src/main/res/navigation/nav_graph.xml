@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/jotzListFragment"
-        android:name="com.brian.jotz.presentation.fragments.JotzListFragment"
+        android:name="com.brian.jotz.presentation.jotz_list.JotzListFragment"
         android:label="Jotr"
         tools:layout="@layout/fragment_jotz_list">
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/addJotzFragment"
-        android:name="com.brian.jotz.presentation.fragments.AddJotzFragment"
+        android:name="com.brian.jotz.presentation.add_jotz.AddJotzFragment"
         android:label="{title}"
         tools:layout="@layout/fragment_add_jotz">
         <action
@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/jotzDetailFragment"
-        android:name="com.brian.jotz.presentation.fragments.JotzDetailFragment"
+        android:name="com.brian.jotz.presentation.jotz_detail.JotzDetailFragment"
         android:label="Jot"
         tools:layout="@layout/fragment_jotz_detail">
         <action

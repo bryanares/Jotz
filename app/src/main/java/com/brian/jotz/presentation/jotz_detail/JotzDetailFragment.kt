@@ -1,4 +1,4 @@
-package com.brian.jotz.presentation.fragments
+package com.brian.jotz.presentation.jotz_detail
 
 import android.os.Bundle
 import android.util.Log
