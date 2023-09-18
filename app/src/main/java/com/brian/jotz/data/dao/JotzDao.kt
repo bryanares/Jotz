@@ -1,4 +1,4 @@
-package com.brian.jotz.data
+package com.brian.jotz.data.dao
 
 import androidx.room.*
 import com.brian.jotz.data.models.Jotz

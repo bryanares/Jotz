@@ -1,10 +1,11 @@
 package com.brian.jotz.data
 
 import android.content.Context
-import androidx.lifecycle.ViewModelProvider.NewInstanceFactory.Companion.instance
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.brian.jotz.data.dao.JotzDao
+import com.brian.jotz.data.models.Jotz
 
 @Database(entities = [Jotz::class], version = 1, exportSchema = false)
 abstract class JotzRoomDatabase : RoomDatabase() {
