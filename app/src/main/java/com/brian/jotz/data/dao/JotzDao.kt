@@ -1,7 +1,7 @@
 package com.brian.jotz.data.dao
 
 import androidx.room.*
-import com.brian.jotz.data.models.Jotz
+import com.brian.jotz.data.entities.Jotz
 import kotlinx.coroutines.flow.Flow
 
 @Dao

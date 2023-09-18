@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.brian.jotz.data.dao.JotzDao
-import com.brian.jotz.data.models.Jotz
+import com.brian.jotz.data.entities.Jotz
 
 @Database(entities = [Jotz::class], version = 1, exportSchema = false)
 abstract class JotzRoomDatabase : RoomDatabase() {

@@ -1,7 +1,7 @@
 package com.brian.jotz.domain.viewmodels
 
 import androidx.lifecycle.*
-import com.brian.jotz.data.models.Jotz
+import com.brian.jotz.data.entities.Jotz
 import com.brian.jotz.data.dao.JotzDao
 import kotlinx.coroutines.launch
 

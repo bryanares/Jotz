@@ -12,7 +12,7 @@ import androidx.navigation.fragment.navArgs
 import com.brian.jotz.JotzApplication
 import com.brian.jotz.domain.viewmodels.JotzViewModel
 import com.brian.jotz.domain.viewmodels.JotzViewModelFactory
-import com.brian.jotz.data.models.Jotz
+import com.brian.jotz.data.entities.Jotz
 import com.brian.jotz.databinding.FragmentAddJotzBinding
 
 class AddJotzFragment : Fragment() {

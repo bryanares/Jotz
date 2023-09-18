@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.brian.jotz.data.models.Jotz
+import com.brian.jotz.data.entities.Jotz
 import com.brian.jotz.databinding.JotListItemBinding
 
 class JotzListAdapter(private val onItemClicked: (Jotz) -> Unit) :
