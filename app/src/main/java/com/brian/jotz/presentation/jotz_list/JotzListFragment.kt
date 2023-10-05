@@ -14,7 +14,6 @@ import com.brian.jotz.R
 import com.brian.jotz.databinding.FragmentJotzListBinding
 import com.brian.jotz.domain.viewmodels.JotzViewModel
 import com.brian.jotz.domain.viewmodels.JotzViewModelFactory
-import com.brian.jotz.presentation.adapters.JotzListAdapter
 
 class JotzListFragment : Fragment() {
 

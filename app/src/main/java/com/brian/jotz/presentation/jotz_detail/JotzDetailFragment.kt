@@ -13,7 +13,7 @@ import com.brian.jotz.JotzApplication
 import com.brian.jotz.domain.viewmodels.JotzViewModel
 import com.brian.jotz.domain.viewmodels.JotzViewModelFactory
 import com.brian.jotz.R
-import com.brian.jotz.data.entities.Jotz
+import com.brian.jotz.data.database.entities.Jotz
 import com.brian.jotz.databinding.FragmentJotzDetailBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
