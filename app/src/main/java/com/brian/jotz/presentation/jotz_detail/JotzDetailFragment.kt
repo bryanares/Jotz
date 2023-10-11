@@ -9,26 +9,27 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.brian.jotz.JotzApplication
-import com.brian.jotz.domain.viewmodels.JotzViewModel
-import com.brian.jotz.domain.viewmodels.JotzViewModelFactory
 import com.brian.jotz.R
 import com.brian.jotz.data.database.entities.Jotz
 import com.brian.jotz.databinding.FragmentJotzDetailBinding
+import com.brian.jotz.domain.viewmodels.JotzViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class JotzDetailFragment : Fragment() {
 
     private var _binding: FragmentJotzDetailBinding? = null
     private val binding get() = _binding!!
     private val navigationArgs: JotzDetailFragmentArgs by navArgs()
     lateinit var jotz: Jotz
-    private val viewModel: JotzViewModel by activityViewModels {
-        JotzViewModelFactory(
-            (activity?.application as JotzApplication).database.jotzDao()
-        )
-    }
+    private val viewModel : JotzViewModel by activityViewModels()
+//    private val viewModel: JotzViewModel by activityViewModels {
+//        JotzViewModelFactory(
+//            (activity?.application as JotzApplication).database.jotzDao()
+//        )
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

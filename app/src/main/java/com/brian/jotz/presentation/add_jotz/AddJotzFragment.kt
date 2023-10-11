@@ -9,22 +9,22 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.brian.jotz.JotzApplication
-import com.brian.jotz.domain.viewmodels.JotzViewModel
-import com.brian.jotz.domain.viewmodels.JotzViewModelFactory
 import com.brian.jotz.data.database.entities.Jotz
 import com.brian.jotz.databinding.FragmentAddJotzBinding
+import com.brian.jotz.domain.viewmodels.JotzViewModel
 import com.brian.jotz.presentation.jotz_detail.JotzDetailFragmentArgs
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddJotzFragment : Fragment() {
 
 
     private var _binding: FragmentAddJotzBinding? = null
     private val binding get() = _binding!!
-
-    private val viewModel: JotzViewModel by activityViewModels() {
-        JotzViewModelFactory((activity?.application as JotzApplication).database.jotzDao())
-    }
+    private val viewModel : JotzViewModel by activityViewModels()
+//    private val viewModel: JotzViewModel by activityViewModels() {
+//        JotzViewModelFactory((activity?.application as JotzApplication).database.jotzDao())
+//    }
     lateinit var jotz: Jotz
     private val navigationArgs: JotzDetailFragmentArgs by navArgs()
 
