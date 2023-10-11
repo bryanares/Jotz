@@ -1,4 +1,9 @@
 package com.brian.jotz.data.di
 
-class JotzHiltApplication {
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
+
+@HiltAndroidApp
+class JotzHiltApplication : Application() {
+
 }
