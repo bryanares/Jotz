@@ -1,11 +1,15 @@
 package com.brian.jotz.domain.viewmodels
 
 import androidx.lifecycle.*
-import com.brian.jotz.data.database.entities.Jotz
 import com.brian.jotz.data.database.dao.JotzDao
+import com.brian.jotz.data.database.entities.Jotz
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class JotzViewModel(private val jotzDao: JotzDao) : ViewModel() {
+@HiltViewModel
+class JotzViewModel
+@Inject constructor(private val jotzDao: JotzDao) : ViewModel() {
 
     val allJotz: LiveData<List<Jotz>> = jotzDao.getItems().asLiveData()
 
@@ -82,12 +86,12 @@ class JotzViewModel(private val jotzDao: JotzDao) : ViewModel() {
 
 }
 
-class JotzViewModelFactory(private val jotzDao: JotzDao) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(JotzViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return JotzViewModel(jotzDao) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
-}
+//class JotzViewModelFactory(private val jotzDao: JotzDao) : ViewModelProvider.Factory {
+//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+//        if (modelClass.isAssignableFrom(JotzViewModel::class.java)) {
+//            @Suppress("UNCHECKED_CAST")
+//            return JotzViewModel(jotzDao) as T
+//        }
+//        throw IllegalArgumentException("Unknown ViewModel class")
+//    }
+//}
