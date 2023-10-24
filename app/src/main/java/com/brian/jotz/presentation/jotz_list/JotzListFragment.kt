@@ -14,18 +14,13 @@ import com.brian.jotz.databinding.FragmentJotzListBinding
 import com.brian.jotz.domain.viewmodels.JotzViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class JotzListFragment : Fragment() {
 
     private var _binding : FragmentJotzListBinding? = null
     private val binding get() = _binding!!
     private val viewModel : JotzViewModel by activityViewModels()
-
-//    private val viewModel : JotzViewModel by activityViewModels {
-//        JotzViewModelFactory(
-//            (activity?.application as JotzApplication).database.jotzDao()
-//        )
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
