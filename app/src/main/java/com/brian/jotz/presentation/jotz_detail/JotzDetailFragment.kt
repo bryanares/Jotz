@@ -16,7 +16,6 @@ import com.brian.jotz.domain.viewmodels.JotzViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class JotzDetailFragment : Fragment() {
 
@@ -24,12 +23,7 @@ class JotzDetailFragment : Fragment() {
     private val binding get() = _binding!!
     private val navigationArgs: JotzDetailFragmentArgs by navArgs()
     lateinit var jotz: Jotz
-    private val viewModel : JotzViewModel by activityViewModels()
-//    private val viewModel: JotzViewModel by activityViewModels {
-//        JotzViewModelFactory(
-//            (activity?.application as JotzApplication).database.jotzDao()
-//        )
-//    }
+    private val viewModel: JotzViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -87,7 +81,7 @@ class JotzDetailFragment : Fragment() {
     }
 
     //edit current item(Jotz)
-    private fun editJotz(){
+    private fun editJotz() {
         val action = JotzDetailFragmentDirections.actionJotzDetailFragmentToAddJotzFragment(
             getString(R.string.edit_fragment_title), jotz.id
         )
