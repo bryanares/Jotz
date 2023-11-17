@@ -21,8 +21,9 @@ class AddJotzFragment : Fragment() {
 
     private var _binding: FragmentAddJotzBinding? = null
     private val binding get() = _binding!!
-    private val viewModel : JotzViewModel by activityViewModels()
-//    private val viewModel: JotzViewModel by activityViewModels() {
+    private val viewModel: JotzViewModel by activityViewModels()
+
+    //    private val viewModel: JotzViewModel by activityViewModels() {
 //        JotzViewModelFactory((activity?.application as JotzApplication).database.jotzDao())
 //    }
     lateinit var jotz: Jotz
@@ -56,7 +57,7 @@ class AddJotzFragment : Fragment() {
                 binding.addBody.text.toString(),
             )
         }
-        val action = AddJotzFragmentDirections.actionAddJotzFragmentToJotzListFragment()
+        val action = AddJotzFragmentDirections.actionAddJotzFragmentToJotzListFragment("")
         findNavController().navigate(action)
     }
 
@@ -79,7 +80,7 @@ class AddJotzFragment : Fragment() {
                 this.binding.addBody.text.toString()
             )
 
-            val action = AddJotzFragmentDirections.actionAddJotzFragmentToJotzListFragment()
+            val action = AddJotzFragmentDirections.actionAddJotzFragmentToJotzListFragment("")
             findNavController().navigate(action)
         }
     }
