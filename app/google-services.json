@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "480975265965",
+    "project_id": "jotz-9b22e",
+    "storage_bucket": "jotz-9b22e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:480975265965:android:aff4316dc4300c94d7a624",
+        "android_client_info": {
+          "package_name": "com.brian.jotz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkFAd11pV7PUTCaMlgNNpV-6s7IjTp4cY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
