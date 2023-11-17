@@ -21,8 +21,8 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SignupFragment : Fragment() {
-    private lateinit var _binding : FragmentSignupBinding
-    private val binding get() = _binding
+    private var _binding : FragmentSignupBinding? = null
+    private val binding get() = _binding!!
     private val authViewModel: AuthViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
