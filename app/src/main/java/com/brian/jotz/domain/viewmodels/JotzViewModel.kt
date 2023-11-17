@@ -3,15 +3,32 @@ package com.brian.jotz.domain.viewmodels
 import androidx.lifecycle.*
 import com.brian.jotz.data.database.dao.JotzDao
 import com.brian.jotz.data.database.entities.Jotz
+import com.brian.jotz.data.repository.MainRepository
+import com.brian.jotz.data.utils.Rezults
+import com.brian.jotz.features.auth.domain.model.AuthUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class JotzViewModel
-@Inject constructor(private val jotzDao: JotzDao) : ViewModel() {
+@Inject constructor
+    (private val jotzDao: JotzDao,
+            private val repository: MainRepository
+    ) : ViewModel() {
 
     val allJotz: LiveData<List<Jotz>> = jotzDao.getItems().asLiveData()
+    private val _authUiState = MutableStateFlow(AuthUiState())
+    val authUiState = _authUiState.asStateFlow()
+
+    fun resetState() {
+        _authUiState.value = AuthUiState()
+    }
 
     //call dao method to insert data to db
     private fun insertJotz(jotz: Jotz) {
