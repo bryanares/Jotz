@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/jotzListFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/jotzListFragment"
@@ -16,6 +16,8 @@
         <action
             android:id="@+id/action_jotzListFragment_to_jotzDetailFragment"
             app:destination="@id/jotzDetailFragment" />
+        <argument android:name="user_id"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addJotzFragment"
@@ -47,5 +49,26 @@
         <action
             android:id="@+id/action_jotzDetailFragment_to_addJotzFragment"
             app:destination="@id/addJotzFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.brian.jotz.features.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_signupFragment"
+            app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_jotzListFragment"
+            app:destination="@id/jotzListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.brian.jotz.features.signup.SignupFragment"
+        android:label="fragment_signup"
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_signupFragment_to_jotzListFragment"
+            app:destination="@id/jotzListFragment" />
     </fragment>
 </navigation>
