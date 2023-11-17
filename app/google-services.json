@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "480975265965",
-    "project_id": "jotz-9b22e",
-    "storage_bucket": "jotz-9b22e.appspot.com"
+    "project_number": "914678290014",
+    "project_id": "jotz-63c67",
+    "storage_bucket": "jotz-63c67.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:480975265965:android:aff4316dc4300c94d7a624",
+        "mobilesdk_app_id": "1:914678290014:android:df9f4dc71f7865a00606cf",
         "android_client_info": {
           "package_name": "com.brian.jotz"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDkFAd11pV7PUTCaMlgNNpV-6s7IjTp4cY"
+          "current_key": "AIzaSyCgo_Cyl0I3pOmqhGhxZSEqYJli09gQnos"
         }
       ],
       "services": {
