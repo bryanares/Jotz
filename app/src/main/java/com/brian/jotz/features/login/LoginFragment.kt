@@ -1,6 +1,7 @@
 package com.brian.jotz.features.login
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,13 +23,9 @@ import kotlinx.coroutines.launch
 class LoginFragment : Fragment() {
 
 
-    private lateinit var _binding: FragmentLoginBinding
-    private val binding get() = _binding
+    private var _binding: FragmentLoginBinding? = null
+    private val binding get() = _binding!!
     private val authViewModel: AuthViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
