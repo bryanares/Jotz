@@ -21,8 +21,8 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SignupFragment : Fragment() {
-    private var _binding : FragmentSignupBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding : FragmentSignupBinding
+//    private val binding get() = _binding!!
     private val authViewModel: AuthViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,9 +35,8 @@ class SignupFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentSignupBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        binding = FragmentSignupBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,6 +51,7 @@ class SignupFragment : Fragment() {
             )
         }
         collectLatestStates()
+        authViewModel.resetState()
     }
 
     //
@@ -70,8 +70,8 @@ class SignupFragment : Fragment() {
                     state.error?.let {
                         Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
                     }
-                    authViewModel.resetState()
-                }
+//                    authViewModel.resetState()
+                } 
             }
         }
     }
