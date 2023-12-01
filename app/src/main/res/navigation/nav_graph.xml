@@ -53,8 +53,8 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.brian.jotz.features.login.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_signupFragment"
             app:destination="@id/signupFragment" />
@@ -65,8 +65,8 @@
     <fragment
         android:id="@+id/signupFragment"
         android:name="com.brian.jotz.features.signup.SignupFragment"
-        android:label="fragment_signup"
-        tools:layout="@layout/fragment_signup" >
+        android:label="Sign Up"
+        tools:layout="@layout/fragment_signup">
         <action
             android:id="@+id/action_signupFragment_to_jotzListFragment"
             app:destination="@id/jotzListFragment" />
