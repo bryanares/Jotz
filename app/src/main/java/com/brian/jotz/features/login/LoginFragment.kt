@@ -29,7 +29,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
@@ -40,7 +40,6 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         collectLatestStates()
-        authViewModel.resetState()
         binding.loginBt.setOnClickListener {
             authViewModel.login(
                 binding.emailLogin.editText?.text.toString(),
@@ -70,7 +69,7 @@ class LoginFragment : Fragment() {
                     if (state.error != null) {
                         Toast.makeText(requireContext(), state.error, Toast.LENGTH_SHORT).show()
                     }
-//                    authViewModel.resetState()
+                    authViewModel.resetState()
                 }
             }
         }
