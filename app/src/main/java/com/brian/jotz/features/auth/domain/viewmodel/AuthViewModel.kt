@@ -23,7 +23,7 @@ class AuthViewModel @Inject constructor(
     val authUiState = _authUiState.asStateFlow()
 
     fun resetState() {
-        _authUiState.value = AuthUiState()
+        _authUiState.update { AuthUiState() }
     }
 
     //login functionality, return user, or error
