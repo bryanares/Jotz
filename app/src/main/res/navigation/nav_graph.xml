@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/jotzListFragment"
-        android:name="com.brian.jotz.presentation.jotz_list.JotzListFragment"
+        android:name="com.brian.jotz.features.jotz_history.presentation.jotz_list.JotzListFragment"
         android:label="Jotr"
         tools:layout="@layout/fragment_jotz_list">
         <action
@@ -21,23 +21,25 @@
     </fragment>
     <fragment
         android:id="@+id/addJotzFragment"
-        android:name="com.brian.jotz.presentation.add_jotz.AddJotzFragment"
-        android:label="{title}"
+        android:name="com.brian.jotz.features.jotz_history.presentation.add_jotz.AddJotzFragment"
         tools:layout="@layout/fragment_add_jotz">
         <action
             android:id="@+id/action_addJotzFragment_to_jotzListFragment"
             app:destination="@id/jotzListFragment" />
         <argument
-            android:name="title"
+            android:name="user_id"
             app:argType="string" />
         <argument
             android:name="jot_id"
-            android:defaultValue="-1"
-            app:argType="integer" />
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_addJotzFragment_to_jotzDetailFragment"
+            app:destination="@id/jotzDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/jotzDetailFragment"
-        android:name="com.brian.jotz.presentation.jotz_detail.JotzDetailFragment"
+        android:name="com.brian.jotz.features.jotz_history.presentation.jotz_detail.JotzDetailFragment"
         android:label="Jot"
         tools:layout="@layout/fragment_jotz_detail">
         <action
@@ -45,14 +47,17 @@
             app:destination="@id/jotzListFragment" />
         <argument
             android:name="jot_id"
-            app:argType="integer" />
+            app:argType="string" />
         <action
             android:id="@+id/action_jotzDetailFragment_to_addJotzFragment"
             app:destination="@id/addJotzFragment" />
+        <argument
+            android:name="user_id"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.brian.jotz.features.login.LoginFragment"
+        android:name="com.brian.jotz.features.auth.presentation.login.LoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_login">
         <action
@@ -64,7 +69,7 @@
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
-        android:name="com.brian.jotz.features.signup.SignupFragment"
+        android:name="com.brian.jotz.features.auth.presentation.signup.SignupFragment"
         android:label="Sign Up"
         tools:layout="@layout/fragment_signup">
         <action
