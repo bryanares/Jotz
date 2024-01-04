@@ -1,4 +1,4 @@
-package com.brian.jotz.presentation.main_activity
+package com.brian.jotz.features.jotz_history.presentation.main_activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
