@@ -2,7 +2,7 @@ package com.brian.jotz.data.di.modules
 
 import android.app.Application
 import androidx.room.Room
-import com.brian.jotz.data.database.JotzRoomDatabase
+import com.brian.jotz.data.database.db.JotzRoomDatabase
 import com.brian.jotz.data.database.dao.JotzDao
 import com.brian.jotz.data.repository.MainRepository
 import com.brian.jotz.data.repository.MainRepositoryImpl
