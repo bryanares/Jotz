@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.jotz_detail.JotzDetailFragment">
+    tools:context=".features.jotz_history.presentation.jotz_detail.JotzDetailFragment">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/jotDetailTitle"
@@ -27,7 +27,18 @@
         app:layout_constraintEnd_toEndOf="@+id/jotDetailTitle"
         app:layout_constraintStart_toStartOf="@id/jotDetailTitle"
         app:layout_constraintTop_toBottomOf="@id/jotDetailTitle" />
-
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/jotDetailDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        tools:text="Date"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/jotDetailBody" />
     <Button
         android:id="@+id/deleteJotBtn"
         style="?attr/materialButtonOutlinedStyle"

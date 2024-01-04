@@ -4,7 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.add_jotz.AddJotzFragment">
+    tools:context=".features.jotz_history.presentation.add_jotz.AddJotzFragment">
+    <com.google.android.material.textfield.TextInputLayout
+
+        android:id="@+id/jotDateEt"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Date"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editOrAddTextView">
+
+        <com.google.android.material.textfield.TextInputEditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
 
@@ -16,18 +34,17 @@
         android:layout_margin="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/jotDateEt">
 
         <com.google.android.material.textfield.TextInputEditText
 
-            android:id="@+id/addTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/addNoteET"
+        android:id="@+id/addJotEt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Add Note"
@@ -38,7 +55,6 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/addBody"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
@@ -59,7 +75,23 @@
         android:text="Add Jot"
         app:icon= "@drawable/ic_add"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/addNoteET"
-        app:layout_constraintTop_toBottomOf="@+id/addNoteET" />
+        app:layout_constraintStart_toStartOf="@+id/addJotEt"
+
+        app:layout_constraintTop_toBottomOf="@+id/addJotEt" />
+    <TextView
+        app:circularflow_radiusInDP="16d"
+        android:id="@+id/editOrAddTextView"
+        android:layout_width="0dp"
+        android:padding="8dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="82dp"
+        android:layout_marginEnd="24dp"
+        android:text="Create a new spending record"
+        android:textSize="48sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
