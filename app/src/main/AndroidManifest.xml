@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Jotz"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.main_activity.MainActivity"
+            android:name=".features.jotz_history.presentation.main_activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
