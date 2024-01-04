@@ -1,4 +1,4 @@
-package com.brian.jotz.features.login
+package com.brian.jotz.features.auth.presentation.login
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -23,7 +23,8 @@ class LoginFragment : Fragment() {
 
 
     private lateinit var binding: FragmentLoginBinding
-//    private val binding get() = _binding!!
+
+    //    private val binding get() = _binding!!
     private val authViewModel: AuthViewModel by viewModels()
 
     override fun onCreateView(
@@ -40,6 +41,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         collectLatestStates()
+        authViewModel.resetState()
         binding.loginBt.setOnClickListener {
             authViewModel.login(
                 binding.emailLogin.editText?.text.toString(),
@@ -53,7 +55,7 @@ class LoginFragment : Fragment() {
     }
 
     //collect latest states, and navigate to home fragment if successful
-    private fun collectLatestStates (){
+    private fun collectLatestStates() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 authViewModel.authUiState.collectLatest { state ->
@@ -69,7 +71,7 @@ class LoginFragment : Fragment() {
                     if (state.error != null) {
                         Toast.makeText(requireContext(), state.error, Toast.LENGTH_SHORT).show()
                     }
-                    authViewModel.resetState()
+//                    authViewModel.resetState()
                 }
             }
         }
