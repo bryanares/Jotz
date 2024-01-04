@@ -1,4 +1,4 @@
-package com.brian.jotz.features.signup
+package com.brian.jotz.features.auth.presentation.signup
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,9 +11,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.brian.jotz.R
 import com.brian.jotz.databinding.FragmentSignupBinding
-import com.brian.jotz.domain.viewmodels.JotzViewModel
 import com.brian.jotz.features.auth.domain.viewmodel.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -21,8 +19,9 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SignupFragment : Fragment() {
-    private lateinit var binding : FragmentSignupBinding
-//    private val binding get() = _binding!!
+    private lateinit var binding: FragmentSignupBinding
+
+    //    private val binding get() = _binding!!
     private val authViewModel: AuthViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +53,6 @@ class SignupFragment : Fragment() {
         authViewModel.resetState()
     }
 
-    //
     private fun collectLatestStates() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
@@ -71,7 +69,7 @@ class SignupFragment : Fragment() {
                         Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
                     }
 //                    authViewModel.resetState()
-                } 
+                }
             }
         }
     }
