@@ -1,5 +1,7 @@
 package com.brian.jotz.data.repository
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.brian.jotz.data.local.JotItem
 import com.brian.jotz.data.local.User
 import com.brian.jotz.data.utils.JotFirebaseDocument
@@ -79,6 +81,7 @@ class MainRepositoryImpl @Inject constructor(
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override suspend fun addOrUpdateJotz(
         userId: String,
         jotItemId: String?,
@@ -88,7 +91,7 @@ class MainRepositoryImpl @Inject constructor(
         //create unique id
         val fileJotItemId = jotItemId ?: createUniqueID(
             userId,
-            LocalDateTime.now().toLong(), "jot_item"
+            LocalDateTime.now().toLong(), "jotz"
         )
         //update item created time, if it is a new item, create unique id and assign it
         jotItem.updatedTime = LocalDateTime.now().toLong()
@@ -150,10 +153,10 @@ class MainRepositoryImpl @Inject constructor(
         userId: String,
         jotItemId: String
     ): Flow<Rezults<JotItem>> = callbackFlow {
-
         jotFirebaseFirestore.collection(userId).document(JotFirebaseDocument.JOTZ)
-            .collection(JotFirebaseDocument.USERS)
+            .collection(JotFirebaseDocument.JOTZ)
             .document(jotItemId).get()
+            //null pointer exemption from here that I don't understand
             .addOnSuccessListener { documentReference ->
                 var jotItem = documentReference.toObject(JotItem::class.java)?.copy(
                     id = documentReference.id
@@ -175,6 +178,7 @@ class MainRepositoryImpl @Inject constructor(
         awaitClose { this.cancel() }
     }
 
+
     //create unique Id using userId, timesStamp, key and key2 variables
     private fun createUniqueID(
         userId: String,
@@ -183,9 +187,9 @@ class MainRepositoryImpl @Inject constructor(
         key2: String? = null
     ): String {
         return if (key2 != null) {
-            "$userId-$timeStamp-$key-$key2"
+            "$userId$timeStamp$key$key2"
         } else {
-            "$userId-$timeStamp-$key"
+            "$userId$timeStamp$key"
         }
     }
 
