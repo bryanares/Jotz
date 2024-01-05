@@ -4,20 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.brian.jotz.data.database.entities.Jotz
 import com.brian.jotz.data.utils.getFullDateFromLong
 import com.brian.jotz.databinding.FragmentAddJotzBinding
 import com.brian.jotz.features.jotz_history.domain.viewmodel.JotzViewModel
-import com.brian.jotz.features.jotz_history.presentation.jotz_detail.JotzDetailFragmentArgs
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -28,15 +24,15 @@ import kotlinx.coroutines.launch
 class AddJotzFragment : Fragment() {
     private lateinit var addJotzBinding: FragmentAddJotzBinding
     private val addJotzFragmentArgs: AddJotzFragmentArgs by navArgs()
-    private val jotzViewModel : JotzViewModel by viewModels()
+    private val jotzViewModel: JotzViewModel by viewModels()
 
-    private var selectedDate : Long? = null
+    private var selectedDate: Long? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        addJotzBinding = FragmentAddJotzBinding.inflate(inflater, container,false)
+        addJotzBinding = FragmentAddJotzBinding.inflate(inflater, container, false)
 
         return addJotzBinding.root
     }
@@ -50,7 +46,7 @@ class AddJotzFragment : Fragment() {
     private fun setViews() {
         addJotzBinding.jotDateEt.editText?.isFocusable = false
         addJotzBinding.jotDateEt.editText?.setOnClickListener {
-            val dateValidator : CalendarConstraints.DateValidator =
+            val dateValidator: CalendarConstraints.DateValidator =
                 DateValidatorPointBackward.before(MaterialDatePicker.todayInUtcMilliseconds())
 
             val constraintBuilder =
@@ -73,7 +69,7 @@ class AddJotzFragment : Fragment() {
             }
         }
 
-        if (addJotzFragmentArgs.jotId == null){
+        if (addJotzFragmentArgs.jotId == null) {
 
             addJotzBinding.addJotBtn.setOnClickListener {
                 var jotTitle =
@@ -92,7 +88,7 @@ class AddJotzFragment : Fragment() {
                     )
                 }
             }
-        }else {
+        } else {
             //update existing record
             addJotzBinding.editOrAddTextView.setText("Edit Jot Enty")
             jotzViewModel.getSingleJotItem(
@@ -116,31 +112,31 @@ class AddJotzFragment : Fragment() {
         }
     }
 
-    private fun collectStates(){
-        viewLifecycleOwner.lifecycleScope.launch{
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED){
-                jotzViewModel.jotItemUiState.collect(){
+    private fun collectStates() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                jotzViewModel.jotItemUiState.collect() {
 
-                    if (it.singleJotItem != null){
+                    if (it.singleJotItem != null) {
                         addJotzBinding.jotDateEt.editText?.setText(it.singleJotItem.date?.getFullDateFromLong())
                         addJotzBinding.addTitleET.editText?.setText(it.singleJotItem.title.toString())
                         addJotzBinding.addJotEt.editText?.setText(it.singleJotItem.body.toString())
                     }
-                    if (it.createdJotItem != null && addJotzFragmentArgs.jotId == null){
+                    if (it.createdJotItem != null && addJotzFragmentArgs.jotId == null) {
                         jotzViewModel.resetState()
                         findNavController().navigate(
                             AddJotzFragmentDirections.actionAddJotzFragmentToJotzDetailFragment(
-                                addJotzFragmentArgs.userId,
-                                it.createdJotItem.id!!
+                                it.createdJotItem.id!!,
+                                addJotzFragmentArgs.userId
                             )
                         )
                     }
-                    if (it.updatedJotItem != null && addJotzFragmentArgs.jotId != null){
+                    if (it.updatedJotItem != null && addJotzFragmentArgs.jotId != null) {
                         jotzViewModel.resetState()
                         findNavController().navigate(
                             AddJotzFragmentDirections.actionAddJotzFragmentToJotzDetailFragment(
-                                addJotzFragmentArgs.userId,
-                                it.updatedJotItem.id!!
+                                it.updatedJotItem.id!!,
+                                addJotzFragmentArgs.userId
                             )
                         )
                     }
