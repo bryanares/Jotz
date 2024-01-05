@@ -1,6 +1,7 @@
 package com.brian.jotz.data.repository
 
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import com.brian.jotz.data.local.JotItem
 import com.brian.jotz.data.local.User
@@ -161,6 +162,9 @@ class MainRepositoryImpl @Inject constructor(
                 var jotItem = documentReference.toObject(JotItem::class.java)?.copy(
                     id = documentReference.id
                 )
+                Log.d("Tag", "${documentReference.id}")
+                Log.d("Tag", "${userId}")
+                Log.d("Tag", "${jotItemId}")
                 this.trySend(
                     Rezults.Success(
                         jotItem!!
