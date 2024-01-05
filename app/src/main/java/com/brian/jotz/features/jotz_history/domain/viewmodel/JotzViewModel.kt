@@ -1,12 +1,11 @@
 package com.brian.jotz.features.jotz_history.domain.viewmodel
 
-import androidx.lifecycle.*
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.brian.jotz.data.database.dao.JotzDao
-import com.brian.jotz.data.database.entities.Jotz
 import com.brian.jotz.data.local.JotItem
 import com.brian.jotz.data.repository.MainRepository
 import com.brian.jotz.data.utils.Rezults
-import com.brian.jotz.features.auth.domain.model.AuthUiState
 import com.brian.jotz.features.jotz_history.domain.model.JotItemUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -85,7 +84,7 @@ class JotzViewModel
                 newJotItem
             )
                 .collectLatest { rezult ->
-                    when (rezult){
+                    when (rezult) {
                         is Rezults.Success -> {
                             _jotItemUiState.update {
                                 JotItemUiState(
@@ -95,7 +94,8 @@ class JotzViewModel
                                 )
                             }
                         }
-                        is Rezults.Error ->{
+
+                        is Rezults.Error -> {
                             _jotItemUiState.update {
                                 JotItemUiState(
                                     isLoading = false,
@@ -110,16 +110,16 @@ class JotzViewModel
     }
 
     fun getSingleJotItem(
-        userId : String,
+        userId: String,
         jotItemId: String
-    ){
-        viewModelScope.launch(Dispatchers.IO){
+    ) {
+        viewModelScope.launch(Dispatchers.IO) {
 
             repository.getSingleJotItem(
                 userId,
                 jotItemId
             ).collectLatest { rezult ->
-                when (rezult){
+                when (rezult) {
                     is Rezults.Success -> {
                         _jotItemUiState.update {
                             JotItemUiState(
@@ -144,8 +144,8 @@ class JotzViewModel
         }
     }
 
-    fun getAllJotItems(userId: String){
-        viewModelScope.launch (Dispatchers.IO){
+    fun getAllJotItems(userId: String) {
+        viewModelScope.launch(Dispatchers.IO) {
 
             repository.getAllJotItems(userId).collectLatest { rezult ->
 
@@ -159,6 +159,7 @@ class JotzViewModel
                             )
                         }
                     }
+
                     is Rezults.Error -> {
                         _jotItemUiState.update {
                             JotItemUiState(
