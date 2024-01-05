@@ -11,10 +11,14 @@ interface MainRepository {
 
     suspend fun signUp(email: String, password: String, name: String): Flow<Rezults<User>>
 
-    suspend fun addOrUpdateJotz(userId : String, jotItemId : String? = null, jotItem: JotItem) : Flow<Rezults<JotItem>>
+    suspend fun addOrUpdateJotz(
+        userId: String,
+        jotItemId: String? = null,
+        jotItem: JotItem
+    ): Flow<Rezults<JotItem>>
 
-    suspend fun getAllJotItems(userId : String) : Flow<Rezults<List<JotItem>>>
+    suspend fun getAllJotItems(userId: String): Flow<Rezults<List<JotItem>>>
 
-    suspend fun getSingleJotItem (userId: String, jotItemId: String) : Flow<Rezults<JotItem>>
+    suspend fun getSingleJotItem(userId: String, jotItemId: String): Flow<Rezults<JotItem>>
 
 }
