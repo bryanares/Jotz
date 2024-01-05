@@ -18,7 +18,8 @@
         android:hint="Email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/password_login">
+        app:layout_constraintBottom_toTopOf="@+id/password_login"
+        android:windowSoftInputMode="adjustPan">
 
         <com.google.android.material.textfield.TextInputEditText
 
@@ -40,7 +41,8 @@
         app:layout_constraintBottom_toTopOf="@+id/login_bt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        android:windowSoftInputMode="adjustPan">
 
         <com.google.android.material.textfield.TextInputEditText
 
