@@ -1,32 +1,27 @@
 package com.brian.jotz.features.jotz_history.presentation.jotz_detail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.brian.jotz.R
-import com.brian.jotz.data.database.entities.Jotz
 import com.brian.jotz.data.utils.getFullDateFromLong
 import com.brian.jotz.databinding.FragmentJotzDetailBinding
 import com.brian.jotz.features.jotz_history.domain.viewmodel.JotzViewModel
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class JotzDetailFragment : Fragment() {
     private lateinit var jotzDetailBinding: FragmentJotzDetailBinding
-    private val jotzDetailFragmentArgs : JotzDetailFragmentArgs by navArgs()
-    private val jotzDetailViewModel : JotzViewModel by viewModels()
+    private val jotzDetailFragmentArgs: JotzDetailFragmentArgs by navArgs()
+    private val jotzDetailViewModel: JotzViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -54,13 +49,13 @@ class JotzDetailFragment : Fragment() {
         }
     }
 
-    private fun collectLatestStates(){
+    private fun collectLatestStates() {
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED){
-                jotzDetailViewModel.jotItemUiState.collect{state ->
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                jotzDetailViewModel.jotItemUiState.collect { state ->
 
-                    if (state.singleJotItem != null){
+                    if (state.singleJotItem != null) {
                         val jotItem = state.singleJotItem
 
                         jotzDetailBinding.jotDetailDate.text =
