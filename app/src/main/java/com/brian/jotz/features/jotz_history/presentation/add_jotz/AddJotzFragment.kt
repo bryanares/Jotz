@@ -78,7 +78,7 @@ class AddJotzFragment : Fragment() {
                     addJotzBinding.addJotEt.editText?.text.toString()
 
 
-                if (jotTitle != null && jotTitle != null && selectedDate != null) {
+                if (jotTitle != null && selectedDate != null) {
 
                     jotzViewModel.addJotItem(
                         addJotzFragmentArgs.userId,
