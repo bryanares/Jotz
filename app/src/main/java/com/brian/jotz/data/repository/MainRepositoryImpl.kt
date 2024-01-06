@@ -1,8 +1,6 @@
 package com.brian.jotz.data.repository
 
-import android.os.Build
 import android.util.Log
-import androidx.annotation.RequiresApi
 import com.brian.jotz.data.local.JotItem
 import com.brian.jotz.data.local.User
 import com.brian.jotz.data.utils.JotFirebaseDocument
@@ -82,7 +80,6 @@ class MainRepositoryImpl @Inject constructor(
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override suspend fun addOrUpdateJotz(
         userId: String,
         jotItemId: String?,
