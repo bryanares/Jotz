@@ -1,6 +1,7 @@
 package com.brian.jotz.features.jotz_history.presentation.jotz_list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,16 +62,15 @@ class JotzListFragment : Fragment() {
                     item.id?.let { it1 ->
                         findNavController().navigate(
                             JotzListFragmentDirections.actionJotzListFragmentToJotzDetailFragment(
-                                jotzListFragmentArgs.userId,
-                                it1
+                                it1,
+                                jotzListFragmentArgs.userId
                             )
                         )
                     }
                 }
             }
         }, R.layout.jot_list_item)
-        jotListFragmentBinding.jotzListRecyclerView.layoutManager = LinearLayoutManager(this.context)
-        jotListFragmentBinding.jotzListRecyclerView.adapter = jotzItemsAdapter
+
         collectLatestStates()
         jotzViewModel.getAllJotItems(jotzListFragmentArgs.userId)
     }
@@ -83,8 +83,13 @@ class JotzListFragment : Fragment() {
                     jotListFragmentBinding.progressBar.isVisible = it.isLoading == true
                     jotListFragmentBinding.noDataFoundText.isVisible =
                         it.isLoading !=true && it.jotItemList?.isEmpty() == true
-                    if (!it.jotItemList.isNullOrEmpty())
+                    if (!it.jotItemList.isNullOrEmpty()){
+                        jotListFragmentBinding.jotzListRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
+                        jotListFragmentBinding.jotzListRecyclerView.adapter = jotzItemsAdapter
                         jotzItemsAdapter.setData(it.jotItemList)
+                    }
+
+                    Log.d("Added", "Item Added ${it.jotItemList}")
                 }
             }
         }
