@@ -15,7 +15,9 @@
             app:destination="@id/addJotzFragment" />
         <action
             android:id="@+id/action_jotzListFragment_to_jotzDetailFragment"
-            app:destination="@id/jotzDetailFragment" />
+            app:destination="@id/jotzDetailFragment"
+            app:popUpTo="@id/jotzListFragment"
+            app:popUpToInclusive="false" />
         <argument android:name="user_id"
             app:argType="string" />
     </fragment>
@@ -50,7 +52,9 @@
             app:argType="string" />
         <action
             android:id="@+id/action_jotzDetailFragment_to_addJotzFragment"
-            app:destination="@id/addJotzFragment" />
+            app:destination="@id/addJotzFragment"
+            app:popUpTo="@id/jotzListFragment"
+            app:popUpToInclusive="false" />
         <argument
             android:name="user_id"
             app:argType="string" />
