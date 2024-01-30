@@ -43,8 +43,8 @@ class JotItemsAdapter(
         }
     }
 
-    fun setData(datalist: List<Any>) {
-        this.dataList = dataList
+    fun setData(newDataList: List<Any>) {
+        this.dataList = newDataList
         notifyDataSetChanged()
     }
 
