@@ -4,11 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.brian.jotz.data.database.entities.Jotz
-import com.brian.jotz.databinding.JotListItemBinding
 
 class JotItemsAdapter(
     val onEachItem: (Any, View) -> Unit,
@@ -37,10 +33,8 @@ class JotItemsAdapter(
     }
 
     override fun onBindViewHolder(holder: JotItemViewHolder, position: Int) {
-        val item = dataList.get(position)
-        if (item != null) {
-            holder.bind(item)
-        }
+        val item = dataList[position]
+        holder.bind(item)
     }
 
     fun setData(newDataList: List<Any>) {
