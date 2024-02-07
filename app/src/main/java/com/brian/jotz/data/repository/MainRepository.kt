@@ -17,8 +17,12 @@ interface MainRepository {
         jotItem: JotItem
     ): Flow<Rezults<JotItem>>
 
+    //fetch all jot entries
     suspend fun getAllJotItems(userId: String): Flow<Rezults<List<JotItem>>>
-
+    //get one jot item
     suspend fun getSingleJotItem(userId: String, jotItemId: String): Flow<Rezults<JotItem>>
+
+    //delete single jot entry
+    suspend fun deleteSingleJotItem(userId: String, jotItemId: String) : Flow<Rezults<List<JotItem>>>
 
 }
