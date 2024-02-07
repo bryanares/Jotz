@@ -174,6 +174,34 @@ class JotzViewModel
         }
     }
 
+    //delete jot item
+    fun deleteSingleJotItem(userId: String, jotItemId: String){
+        viewModelScope.launch (Dispatchers.IO){
+            repository.deleteSingleJotItem(userId, jotItemId).collectLatest { result ->
+                when (result) {
+                    is Rezults.Success -> {
+                        _jotItemUiState.update {
+                            JotItemUiState(
+                                isLoading = false,
+                                isSuccessful = true,
+                                jotItemList = result.data
+                            )
+                        }
+                    }
+                    is Rezults.Error -> {
+                        _jotItemUiState.update {
+                            JotItemUiState(
+                                isLoading = false,
+                                isSuccessful = false,
+                                error = result.exception?.message
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 //    val allJotz: LiveData<List<Jotz>> = jotzDao.getItems().asLiveData()
 //    private val _authUiState = MutableStateFlow(AuthUiState())
 //    val authUiState = _authUiState.asStateFlow()
