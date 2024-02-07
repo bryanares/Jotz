@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.callbackFlow
 import java.time.LocalDateTime
 import javax.inject.Inject
 
+const val TAG: String = "Repo"
 
 class MainRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
@@ -179,6 +180,23 @@ class MainRepositoryImpl @Inject constructor(
         awaitClose { this.cancel() }
     }
 
+    //delete jot item
+    override suspend fun deleteSingleJotItem(
+        userId: String,
+        jotItemId: String
+    ): Flow<Rezults<List<JotItem>>> = callbackFlow {
+        jotFirebaseFirestore.collection(userId).document(JotFirebaseDocument.JOTZ)
+            .collection(JotFirebaseDocument.JOTZ)
+            .document(jotItemId)
+            .delete()
+            .addOnSuccessListener {
+                Log.d(TAG, "DocumentSnapshot successfully deleted!")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error deleting document", e)
+            }
+        awaitClose { this.cancel() }
+    }
 
     //create unique Id using userId, timesStamp, key and key2 variables
     private fun createUniqueID(
