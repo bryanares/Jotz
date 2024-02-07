@@ -47,6 +47,18 @@ class JotzDetailFragment : Fragment() {
                 )
             )
         }
+        collectLatestStates()
+        jotzDetailBinding.deleteJotBtn.setOnClickListener {
+            jotzDetailViewModel.deleteSingleJotItem(
+                jotzDetailFragmentArgs.userId,
+                jotzDetailFragmentArgs.jotId
+            )
+            findNavController().navigate(
+                JotzDetailFragmentDirections.actionJotzDetailFragmentToJotzListFragment(
+                 jotzDetailFragmentArgs.userId
+                )
+            )
+        }
     }
 
     private fun collectLatestStates() {
