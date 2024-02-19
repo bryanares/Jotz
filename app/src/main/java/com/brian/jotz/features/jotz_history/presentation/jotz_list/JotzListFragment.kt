@@ -56,8 +56,10 @@ class JotzListFragment : Fragment() {
 
         jotzItemsAdapter = JotItemsAdapter({ item, view ->
             if (item is JotItem) {
-                view.findViewById<TextView>(R.id.jotListTitle).text =
+                view.findViewById<TextView>(R.id.jotListDesc).text =
                     item.date?.getFullDateFromLong() ?: "N/A"
+                view.findViewById<TextView>(R.id.jotListTitle).text =
+                    item.title.toString()
                 view.setOnClickListener {
                     item.id?.let { it1 ->
                         findNavController().navigate(
