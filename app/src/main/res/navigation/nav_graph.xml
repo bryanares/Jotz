@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_jotz_list">
         <action
             android:id="@+id/action_jotzListFragment_to_addJotzFragment"
-            app:destination="@id/addJotzFragment" />
+            app:destination="@id/addJotzFragment"
+            app:popUpTo="@id/jotzListFragment"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_jotzListFragment_to_jotzDetailFragment"
             app:destination="@id/jotzDetailFragment"
