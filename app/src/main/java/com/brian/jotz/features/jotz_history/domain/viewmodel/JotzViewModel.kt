@@ -175,8 +175,8 @@ class JotzViewModel
     }
 
     //delete jot item
-    fun deleteSingleJotItem(userId: String, jotItemId: String){
-        viewModelScope.launch (Dispatchers.IO){
+    fun deleteSingleJotItem(userId: String, jotItemId: String) {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.deleteSingleJotItem(userId, jotItemId).collectLatest { result ->
                 when (result) {
                     is Rezults.Success -> {
@@ -188,6 +188,7 @@ class JotzViewModel
                             )
                         }
                     }
+
                     is Rezults.Error -> {
                         _jotItemUiState.update {
                             JotItemUiState(
