@@ -87,6 +87,12 @@ class AddJotzFragment : Fragment() {
                         jotBody
                     )
                 }
+                findNavController().navigate(
+                    AddJotzFragmentDirections.actionAddJotzFragmentToJotzListFragment(
+                        addJotzFragmentArgs.userId
+                    )
+
+                )
             }
         } else {
             //update existing record
@@ -108,7 +114,14 @@ class AddJotzFragment : Fragment() {
                     jotTitle,
                     jotBody
                 )
+                findNavController().navigate(
+                    AddJotzFragmentDirections.actionAddJotzFragmentToJotzListFragment(
+                        addJotzFragmentArgs.userId
+                    )
+
+                )
             }
+
         }
     }
 
