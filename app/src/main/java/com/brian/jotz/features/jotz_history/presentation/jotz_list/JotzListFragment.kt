@@ -28,9 +28,9 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class JotzListFragment : Fragment() {
     private lateinit var jotListFragmentBinding: FragmentJotzListBinding
-    private val jotzListFragmentArgs : JotzListFragmentArgs by navArgs()
-    private val jotzViewModel : JotzViewModel by viewModels()
-    private lateinit var jotzItemsAdapter : JotItemsAdapter
+    private val jotzListFragmentArgs: JotzListFragmentArgs by navArgs()
+    private val jotzViewModel: JotzViewModel by viewModels()
+    private lateinit var jotzItemsAdapter: JotItemsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,8 +54,8 @@ class JotzListFragment : Fragment() {
             )
         }
 
-        jotzItemsAdapter = JotItemsAdapter({item, view ->
-            if (item is JotItem){
+        jotzItemsAdapter = JotItemsAdapter({ item, view ->
+            if (item is JotItem) {
                 view.findViewById<TextView>(R.id.jotListTitle).text =
                     item.date?.getFullDateFromLong() ?: "N/A"
                 view.setOnClickListener {
@@ -76,15 +76,16 @@ class JotzListFragment : Fragment() {
     }
 
 
-    private fun collectLatestStates(){
+    private fun collectLatestStates() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED){
-                jotzViewModel.jotItemUiState.collect{
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                jotzViewModel.jotItemUiState.collect {
                     jotListFragmentBinding.progressBar.isVisible = it.isLoading == true
                     jotListFragmentBinding.noDataFoundText.isVisible =
-                        it.isLoading !=true && it.jotItemList?.isEmpty() == true
-                    if (!it.jotItemList.isNullOrEmpty()){
-                        jotListFragmentBinding.jotzListRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
+                        it.isLoading != true && it.jotItemList?.isEmpty() == true
+                    if (!it.jotItemList.isNullOrEmpty()) {
+                        jotListFragmentBinding.jotzListRecyclerView.layoutManager =
+                            LinearLayoutManager(requireActivity())
                         jotListFragmentBinding.jotzListRecyclerView.adapter = jotzItemsAdapter
                         jotzItemsAdapter.setData(it.jotItemList)
                     }
@@ -95,48 +96,3 @@ class JotzListFragment : Fragment() {
         }
     }
 }
-//class JotzListFragment : Fragment() {
-//
-//    private var _binding : FragmentJotzListBinding? = null
-//    private val binding get() = _binding!!
-//    private val viewModel : JotzViewModel by activityViewModels()
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        // Inflate the layout for this fragment
-//        _binding = FragmentJotzListBinding.inflate(inflater, container, false)
-//        val view = binding.root
-//
-//        binding.addJotFab.setOnClickListener{
-//            findNavController().navigate(R.id.action_jotzListFragment_to_addJotzFragment)
-//        }
-//        return view
-//    }
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        //navigate to jotzList Fragment
-//        val adapter = JotzListAdapter{
-//            val action = JotzListFragmentDirections.actionJotzListFragmentToJotzDetailFragment(it.id)
-//            this.findNavController().navigate(action)
-//            Log.d("JotzListfragment", "Item at ${it.id} clicked")
-//        }
-//        binding.jotzListRecyclerView.adapter = adapter
-//        viewModel.allJotz.observe(this.viewLifecycleOwner) { jotz ->
-//            jotz.let {
-//                adapter.submitList(it)
-//            }
-//        }
-//        binding.jotzListRecyclerView.layoutManager = LinearLayoutManager(this.context)
-//        binding.addJotFab.setOnClickListener{
-//            val action = JotzListFragmentDirections.actionJotzListFragmentToAddJotzFragment(
-//                getString(R.string.add_fragment_title)
-//            )
-//            this.findNavController().navigate(action)
-//
-//        }
-//
-//    }
-//}
