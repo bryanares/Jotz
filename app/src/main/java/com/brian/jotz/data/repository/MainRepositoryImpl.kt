@@ -160,9 +160,9 @@ class MainRepositoryImpl @Inject constructor(
                 var jotItem = documentReference.toObject(JotItem::class.java)?.copy(
                     id = documentReference.id
                 )
-                Log.d("Tag", "${documentReference.id}")
-                Log.d("Tag", "${userId}")
-                Log.d("Tag", "${jotItemId}")
+                Log.d("Tag", documentReference.id)
+                Log.d("Tag", userId)
+                Log.d("Tag", jotItemId)
                 this.trySend(
                     Rezults.Success(
                         jotItem!!
